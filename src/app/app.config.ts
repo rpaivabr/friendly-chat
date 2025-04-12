@@ -5,7 +5,8 @@ import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
-import { getMessaging, provideMessaging } from '@angular/fire/messaging';
+import { provideMessaging } from '@angular/fire/messaging';
+import { getMessaging } from 'firebase/messaging/sw';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 
@@ -18,6 +19,5 @@ export const appConfig: ApplicationConfig = {
     provideFirestore(() => getFirestore()), 
     provideStorage(() => getStorage()),
     provideMessaging(() => getMessaging()), 
-    // https://www.gstatic.com/firebasejs/11.2.0/firebase-messaging.js
   ]
 };
