@@ -1,0 +1,27 @@
+import { Component, inject } from '@angular/core';
+import { ChatService } from '../services/chat';
+
+@Component({
+  selector: 'app-login-page',
+  template: `
+  <div class="min-h-[80vh] h-full w-full py-10 flex flex-wrap flex-col-reverse sm:flex-row items-center min-w-screen">
+    <div class="min-w-screen sm:w-[50%] h-full items-center m-auto">
+        <img src="WithFirebase.png" class="w-[350px] m-auto" />
+    </div>
+    <div class="min-w-screen sm:w-[50%] flex flex-col gap-5 items-center h-full">
+        <div>
+            <img src="FriendlyChatLogo.png" class="w-[200px]" />
+            <span class="text-navy-600 text-5xl font-light mt-5">Friendly Chat</span>
+        </div>
+        <button class="transition-all w-[400px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between" (click)="this.chatService.login()">
+            <img src="Google.png" class="w-8 m-2" />
+            <span class="text-slate-700 text-xl flex-grow">Sign in with Google</span>
+        </button>
+    </div>
+  </div>
+  `,
+})
+export class LoginPageComponent {
+  chatService = inject(ChatService);
+  user$ = this.chatService.user$;
+}
