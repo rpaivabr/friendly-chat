@@ -31,7 +31,7 @@ import { ChatService } from '../services/chat';
                             }
                             <div class="flex flex-nowrap justify-end">
                                 <span class="text-neutral-500 text-sm">
-                                    {{message['timestamp'].toDate().toLocaleTimeString()}}
+                                    {{message['timestamp']?.toDate().toLocaleTimeString()}}
                                 </span>
                             </div>
                         </div>
