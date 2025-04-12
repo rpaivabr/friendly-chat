@@ -70,6 +70,9 @@ export class ChatService {
   constructor() {
     this.userSubscription = this.user$.subscribe((aUser: User | null) => {
         this.currentUser = aUser;
+        if (this.currentUser) {
+          this.requestNotificationsPermissions();
+        }
     });
   }
 
@@ -191,6 +194,7 @@ export class ChatService {
 
   // Requests permissions to show notifications.
   requestNotificationsPermissions = async () => {
+    console.log('this.requestNotificationsPermissions');
     console.log('Requesting notifications permission...');
     const permission = await Notification.requestPermission();
 
@@ -204,9 +208,11 @@ export class ChatService {
   }
 
   // Saves the messaging device token to Cloud Firestore.
-  saveMessagingDeviceToken= async () => {
+  saveMessagingDeviceToken = async () => {
+    console.log('this.saveMessagingDeviceToken');
     try {
       const currentToken = await getToken(this.messaging);
+      console.log(currentToken);
       if (currentToken) {
         console.log('Got FCM device token:', currentToken);
         // Saving the Device Token to Cloud Firestore.
