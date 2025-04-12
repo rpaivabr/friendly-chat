@@ -18,5 +18,6 @@ export const appConfig: ApplicationConfig = {
     provideFirestore(() => getFirestore()), 
     provideStorage(() => getStorage()),
     provideMessaging(() => getMessaging()), 
+    // https://www.gstatic.com/firebasejs/11.2.0/firebase-messaging.js
   ]
 };
